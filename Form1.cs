@@ -1,4 +1,6 @@
-﻿using System;
+﻿//conversions system by Ewan Peterson
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,13 +23,16 @@ namespace Conversions
         {
             try
             {
+                //collect inputs
                 double choice = Convert.ToDouble(choiceInput.Text);
                 double value = Convert.ToDouble(valueInput.Text);
 
+                //run conversion
                 ConvertValue(choice, value);
             }
             catch
             {
+                //display error message if an invalid value is inputted
                 outputLabel.Text = "Please input a valid number to convert";
             }
         }
@@ -36,6 +41,7 @@ namespace Conversions
         {
             double convertedNum;
 
+            //converts the value depending on which conversion the user seletcted
             switch (choice)
             {
                 case 1:
@@ -58,6 +64,7 @@ namespace Conversions
                     outputLabel.Text = $"{value} miles = {convertedNum} kilometres.";
                     break;
 
+                    //error message if an invalid conversion is selected
                 default:
                     outputLabel.Text = "Please input a valid conversion";
                     break;
