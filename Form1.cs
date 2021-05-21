@@ -27,8 +27,34 @@ namespace Conversions
                 double choice = Convert.ToDouble(choiceInput.Text);
                 double value = Convert.ToDouble(valueInput.Text);
 
-                //run conversion
-                ConvertValue(choice, value);
+                //decide which conversion to do
+                switch (choice)
+                {
+                    case 1:
+                        double convertedInches = InchToCm(value);
+                        outputLabel.Text = $"{value} inches = {convertedInches} cm";
+                        break;
+
+                    case 2:
+                        double convertedFeet = FeetToCm(value);
+                        outputLabel.Text = $"{value} feet = {convertedFeet} cm";
+                        break;
+
+                    case 3:
+                        double convertedYards = YardsToMetres(value);
+                        outputLabel.Text = $"{value} yards = {convertedYards} metres";
+                        break;
+
+                    case 4:
+                        double convertedMiles = MilesToKilometres(value);
+                        outputLabel.Text = $"{value} miles = {convertedMiles} kilometres";
+                        break;
+
+                    //error message if an invalid conversion is selected
+                    default:
+                        outputLabel.Text = "Please input a valid conversion";
+                        break;
+                }
             }
             catch
             {
@@ -37,42 +63,48 @@ namespace Conversions
             }
         }
 
-        public void ConvertValue(double choice, double value)
+        /// <summary> 
+        /// converts from inches to cm
+        /// </summary>
+        /// <param name="value">number of units being converted</param>
+        /// <returns>converted number of units</returns>
+        public double InchToCm(double value)
         {
-            double convertedNum;
-
-            //converts the value depending on which conversion the user seletcted
-            switch (choice)
-            {
-                case 1:
-                    convertedNum = value * 2.54;
-                    outputLabel.Text = $"{value} inches = {convertedNum} centimetres.";
-                    break;
-
-                case 2:
-                    convertedNum = value * 30.48;
-                    outputLabel.Text = $"{value} feet = {convertedNum} centimetres.";
-                    break;
-
-                case 3:
-                    convertedNum = value * 0.91;
-                    outputLabel.Text = $"{value} yards = {convertedNum} metres.";
-                    break;
-
-                case 4:
-                    convertedNum = value * 1.6;
-                    outputLabel.Text = $"{value} miles = {convertedNum} kilometres.";
-                    break;
-
-                    //error message if an invalid conversion is selected
-                default:
-                    outputLabel.Text = "Please input a valid conversion";
-                    break;
-
-            }
-
+            double convertedNum = value * 2.54;
+            return convertedNum;
         }
 
-        
+        /// <summary>
+        /// converts from feet to cm
+        /// </summary>
+        /// <param name="value">number of units being converted</param>
+        /// <returns>converted number of units</returns>
+        public double FeetToCm(double value)
+        {
+            double convertedNum = value * 30.48;
+            return convertedNum;
+        }
+
+        /// <summary>
+        /// converts from yards to metres
+        /// </summary>
+        /// <param name="value">number of units being converted</param>
+        /// <returns>converted number of units</returns>
+        public double YardsToMetres(double value)
+        {
+            double convertedNum = value * 0.91;
+            return convertedNum;
+        }
+
+        /// <summary>
+        /// converts from miles to kilometres
+        /// </summary>
+        /// <param name="value">number of units being converted</param>
+        /// <returns>converted number of units</returns>
+        public double MilesToKilometres(double value)
+        {
+            double convertedNum = value * 1.6;
+            return convertedNum;
+        }
     }
 }
