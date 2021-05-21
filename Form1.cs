@@ -32,22 +32,22 @@ namespace Conversions
                 {
                     case 1:
                         double convertedInches = InchToCm(value);
-                        outputLabel.Text = $"{value} inches = {convertedInches} cm";
+                        outputLabel.Text = $"{value} inches = {convertedInches.ToString("#.##")} cm";
                         break;
 
                     case 2:
                         double convertedFeet = FeetToCm(value);
-                        outputLabel.Text = $"{value} feet = {convertedFeet} cm";
+                        outputLabel.Text = $"{value} feet = {convertedFeet.ToString("#.##")} cm";
                         break;
 
                     case 3:
                         double convertedYards = YardsToMetres(value);
-                        outputLabel.Text = $"{value} yards = {convertedYards} metres";
+                        outputLabel.Text = $"{value} yards = {convertedYards.ToString("#.##")} metres";
                         break;
 
                     case 4:
                         double convertedMiles = MilesToKilometres(value);
-                        outputLabel.Text = $"{value} miles = {convertedMiles} kilometres";
+                        outputLabel.Text = $"{value} miles = {convertedMiles.ToString("#.##")} kilometres";
                         break;
 
                     //error message if an invalid conversion is selected
